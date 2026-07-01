@@ -26,7 +26,7 @@ export default function Slider({
         </label>
         <span className="font-mono text-sm font-bold text-amber-400">
           {/* Executing the function here so React can render the returned number */}
-          {displayValue()}
+          {displayValue}
         </span>
       </div>
       <input
