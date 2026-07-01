@@ -6,7 +6,7 @@ interface SliderProps {
   min: number;
   max: number;
   step: number;
-  displayValue: ()=>string | number;
+  displayValue:string;
 }
 
 export default function Slider({
