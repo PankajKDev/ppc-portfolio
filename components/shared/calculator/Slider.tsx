@@ -1,3 +1,14 @@
+
+interface SliderProps {
+  label: string;
+  value: number;
+  onChange: (value: number) => void;
+  min: number;
+  max: number;
+  step: number;
+  displayValue: () => number;
+}
+
 export default function Slider({
   label,
   value,
@@ -6,7 +17,7 @@ export default function Slider({
   max,
   step,
   displayValue,
-}) {
+}: SliderProps) {
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-end">
@@ -14,7 +25,8 @@ export default function Slider({
           {label}
         </label>
         <span className="font-mono text-sm font-bold text-amber-400">
-          {displayValue}
+          {/* Executing the function here so React can render the returned number */}
+          {displayValue()}
         </span>
       </div>
       <input
