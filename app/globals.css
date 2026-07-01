@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+@theme {
+  /* =========================================
+     COLORS
+     ========================================= */
+  --color-background: #131313;
+  --color-on-background: #e2e2e2;
+
+  /* Surfaces */
+  --color-surface: #131313;
+  --color-surface-dim: #131313;
+  --color-surface-bright: #393939;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1b1b1b;
+  --color-surface-container: #1f1f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353535;
+  --color-on-surface: #e2e2e2;
+  --color-on-surface-variant: #d1c6ab;
+  --color-surface-variant: #353535;
+  --color-inverse-surface: #e2e2e2;
+  --color-inverse-on-surface: #303030;
+
+  /* Primary (Cyber Yellow/Energy) */
+  --color-primary: #ffecb9;
+  --color-on-primary: #3c2f00;
+  --color-primary-container: #facc15;
+  --color-on-primary-container: #6c5700;
+  --color-inverse-primary: #735c00;
+  --color-primary-fixed: #ffe083;
+  --color-primary-fixed-dim: #eec200;
+  --color-on-primary-fixed: #231b00;
+  --color-on-primary-fixed-variant: #574500;
+
+  /* Secondary (White/Neutral accents) */
+  --color-secondary: #c6c6c7;
+  --color-on-secondary: #2f3131;
+  --color-secondary-container: #454747;
+  --color-on-secondary-container: #b4b5b5;
+  --color-secondary-fixed: #e2e2e2;
+  --color-secondary-fixed-dim: #c6c6c7;
+  --color-on-secondary-fixed: #1a1c1c;
+  --color-on-secondary-fixed-variant: #454747;
+
+  /* Outlines & Errors */
+  --color-outline: #9a9078;
+  --color-outline-variant: #4d4632;
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  /* =========================================
+     TYPOGRAPHY (v4 Namespace mapping)
+     ========================================= */
+  --font-sans: "Geist", sans-serif;
+
+  --text-display-lg: 72px;
+  --text-display-lg--line-height: 1;
+  --text-display-lg--letter-spacing: -0.05em;
+  --text-display-lg--font-weight: 900;
+
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 1.1;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 800;
+
+  --text-headline-lg-mobile: 32px;
+  --text-headline-lg-mobile--line-height: 1.1;
+  --text-headline-lg-mobile--font-weight: 800;
+
+  --text-headline-md: 30px;
+  --text-headline-md--line-height: 1.2;
+  --text-headline-md--font-weight: 700;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.5;
+  --text-body-md--font-weight: 400;
+
+  --text-label-bold: 14px;
+  --text-label-bold--line-height: 1;
+  --text-label-bold--letter-spacing: 0.05em;
+  --text-label-bold--font-weight: 700;
+
+  --text-label-mono: 12px;
+  --text-label-mono--line-height: 1;
+  --text-label-mono--letter-spacing: 0.1em;
+  --text-label-mono--font-weight: 500;
+
+  /* =========================================
+     SHAPE OVERRIDES (Forces brutalism)
+     ========================================= */
+  /* This clears out any default rounding utilities to prevent misuse */
+  --radius-*: initial;
+  --radius-none: 0px;
+}
+
+/* =========================================
+   BASE RESETS
+   ========================================= */
+@layer base {
+  html,
+  body {
+    @apply bg-background text-on-background font-sans antialiased;
+  }
+
+  /* Absolute rejection of soft UI properties */
+  * {
+    @apply rounded-none shadow-none;
+  }
+}
+
+/* =========================================
+   COMPONENTS
+   ========================================= */
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply flex items-center justify-center bg-primary-container text-black font-bold uppercase tracking-wider px-6 py-3 border-none transition-colors duration-0;
+  }
+  .btn-primary:hover,
+  .btn-primary:active {
+    @apply bg-white text-black;
+  }
+
+  .btn-secondary {
+    @apply flex items-center justify-center bg-transparent text-white font-bold uppercase tracking-wider px-6 py-3 border-2 border-white transition-colors duration-0;
+  }
+  .btn-secondary:hover,
+  .btn-secondary:active {
+    @apply bg-primary-container border-primary-container text-black;
+  }
+
+  /* Forms & Inputs */
+  .input-group {
+    @apply flex flex-col gap-1;
+  }
+
+  .input-label {
+    @apply text-label-bold text-white uppercase;
+  }
+
+  .input-field {
+    @apply bg-black border border-white text-white px-4 py-3 outline-none transition-all duration-0;
+  }
+  .input-field:focus {
+    @apply border-2 border-primary-container p-2.75; /* p-[11px] prevents layout shift when border increases */
+  }
+
+  .checkbox,
+  .radio-btn {
+    @apply appearance-none w-5 h-5 bg-black border border-white outline-none cursor-pointer shrink-0;
+  }
+  .checkbox:checked,
+  .radio-btn:checked {
+    @apply bg-primary-container border-primary-container;
+  }
+
+  /* Cards & Containers */
+  .kinetic-card {
+    @apply bg-[#111111] border border-[#333333] p-6 relative;
+  }
+
+  .kinetic-card-active {
+    @apply border-t-4 border-t-primary-container border-l-[#333333] border-r-[#333333] border-b-[#333333];
+  }
+
+  .kinetic-card-header {
+    @apply bg-[#111111] border-b border-[#333333] p-4;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - 12px),
+      calc(100% - 12px) 100%,
+      0 100%
+    );
+  }
+
+  /* Industrial Accents & Status */
+  .hazard-stripe {
+    background: repeating-linear-gradient(
+      45deg,
+      var(--color-primary-container),
+      var(--color-primary-container) 20px,
+      #000000 20px,
+      #000000 40px
+    );
+  }
+
+  .hazard-border {
+    @apply border-t-40 border-transparent;
+    border-image: repeating-linear-gradient(
+        45deg,
+        var(--color-primary-container),
+        var(--color-primary-container) 20px,
+        #000000 20px,
+        #000000 40px
+      )
+      40;
+  }
+
+  .status-chip {
+    @apply inline-flex items-center justify-center bg-surface-bright text-white text-label-mono uppercase px-3 py-1 border border-[#333333];
+  }
+
+  /* Data Tables */
+  .kinetic-table {
+    @apply w-full text-left border-collapse;
+  }
+  .kinetic-table th {
+    @apply text-label-bold uppercase border-b-2 border-white p-3;
+  }
+  .kinetic-table td {
+    @apply text-body-md border-b-2 border-[#333333] border-r p-3 first:border-l first:border-[#333333];
+  }
+}
+
+/* =========================================
+   LAYOUT UTILITIES
+   ========================================= */
+@layer utilities {
+  .kinetic-container {
+    @apply mx-auto w-full max-w-max px-6;
+  }
+
+  .kinetic-grid {
+    @apply grid grid-cols-4 gap-3 md:grid-cols-8 md:gap-4 lg:grid-cols-12;
+  }
+}
