@@ -1,7 +1,9 @@
-import React from "react";
+import CalculatorSection from "@/components/shared/calculator/CalculatorSection";
 
-function page() {
-  return <div>page</div>;
+export default function page() {
+  return (
+    <>
+      <CalculatorSection />
+    </>
+  );
 }
-
-export default page;

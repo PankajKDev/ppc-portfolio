@@ -68,13 +68,13 @@ function Navbar() {
             </Link>
           </div>
 
-          <button
-            type="button"
+          <Link
+            href="/contact"
             className="btn-primary hidden px-6 py-2 font-label-bold uppercase text-on-primary transition-transform active:translate-y-0.5 md:block"
             onClick={() => setIsMenuOpen(false)}
           >
             Let&apos;s Scale
-          </button>
+          </Link>
 
           <button
             type="button"
