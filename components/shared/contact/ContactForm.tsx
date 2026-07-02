@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import FormField from "./FormField";
 import SubmitButton from "./SubmitButton";
 import { Mail, User } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function ContactForm() {
@@ -48,7 +48,7 @@ export default function ContactForm() {
     return isValid;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) return;
     try {
@@ -68,11 +68,12 @@ export default function ContactForm() {
       }
     } catch (e) {
       toast.error("ERR: NETWORK_DISCONNECT");
+      console.log(e);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+    <form onSubmit={handleSubmit} className="space-y-8 p-3 relative z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <FormField
           id="name"

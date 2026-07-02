@@ -100,13 +100,14 @@ function Navbar() {
               : "pointer-events-none max-h-0 opacity-0"
           }`}
         >
-          <button
+          <Link
+            href="/contact"
             type="button"
             className="btn-primary mb-3 w-full px-6 py-3 text-center font-label-bold uppercase text-on-primary"
             onClick={() => setIsMenuOpen(false)}
           >
             Let&apos;s Scale
-          </button>
+          </Link>
 
           {isHome ? (
             <>

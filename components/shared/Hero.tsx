@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 function Hero() {
@@ -19,7 +20,10 @@ function Hero() {
             through data-led execution.
           </p>
           <div className="flex flex-wrap gap-5">
-            <button className="bg-primary-container text-on-primary px-10 py-5 font-label-bold text-lg uppercase flex items-center gap-3 hover:bg-white transition-colors group">
+            <Link
+              href="/contact"
+              className="bg-primary-container text-on-primary px-10 py-5 font-label-bold text-lg uppercase flex items-center gap-3 hover:bg-white transition-colors group"
+            >
               Initiate Audit
               <span
                 className="material-symbols-outlined group-hover:translate-x-1 transition-transform"
@@ -27,10 +31,13 @@ function Hero() {
               >
                 <ArrowRight />
               </span>
-            </button>
-            <button className="border-2 border-white text-white px-10 py-5 font-label-bold text-lg uppercase hover:bg-primary-container hover:border-primary-container hover:text-on-primary transition-colors">
-              View Dossier
-            </button>
+            </Link>
+            <Link
+              href="/calculator"
+              className="border-2 border-white text-white px-10 py-5 font-label-bold text-lg uppercase hover:bg-primary-container hover:border-primary-container hover:text-on-primary transition-colors"
+            >
+              Calculate Expected Returns
+            </Link>
           </div>
         </div>
 
