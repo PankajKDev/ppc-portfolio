@@ -5,8 +5,9 @@ import {
   MAX_OPTIMIZED_RATE,
   OPTIMIZATION_MULTIPLIER,
 } from "@/constants";
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Slider from "./Slider";
+import Link from "next/link";
 
 function CalculatorSection() {
   const [spend, setSpend] = useState(10000);
@@ -215,12 +216,15 @@ function CalculatorSection() {
             </div>
 
             <div className="mt-4 flex justify-end">
-              <button className="bg-amber-400 text-black font-mono text-sm font-bold uppercase px-8 py-5 hover:bg-white transition-all duration-150 w-full md:w-auto flex items-center justify-center gap-2 group">
+              <Link
+                href="/contact"
+                className="bg-amber-400 text-black font-mono text-sm font-bold uppercase px-8 py-5 hover:bg-white transition-all duration-150 w-full md:w-auto flex items-center justify-center gap-2 group"
+              >
                 Initialize system audit
                 <span className="group-hover:translate-x-1 transition-transform">
                   →
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

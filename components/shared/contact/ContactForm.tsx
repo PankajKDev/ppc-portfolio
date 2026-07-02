@@ -4,8 +4,9 @@ import "react-toastify/dist/ReactToastify.css";
 import FormField from "./FormField";
 import SubmitButton from "./SubmitButton";
 import { Mail, User } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 export default function ContactForm() {
   const { name, email, requirement, setField, setFieldEmpty } =
@@ -60,6 +61,13 @@ export default function ContactForm() {
       const data = await res.json();
       if (res.ok) {
         toast.success("01_TRANSMISSION_SUCCESSFUL: We will be in contact soon");
+        sendGTMEvent({
+          event: "form_submitted",
+          form_name: "contact",
+          page: "/contact",
+          form_type: "lead",
+          success: true,
+        });
         setFieldEmpty();
       } else {
         toast.error(

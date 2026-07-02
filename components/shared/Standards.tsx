@@ -1,4 +1,4 @@
-import React from "react";
+import { ShieldCheck } from "lucide-react";
 
 function Standards() {
   return (
@@ -88,8 +88,8 @@ function Standards() {
                 className="absolute bottom-0 left-0 w-full bg-hazard-stripe opacity-20"
                 style={{ height: "40%" }}
               ></div>
-              <div className="absolute inset-0 flex items-center justify-center font-label-mono text-white">
-                TESTING_ACTIVE...
+              <div className="absolute inset-0  flex items-center justify-center font-label-mono text-white">
+                <ShieldCheck size={42} color="yellow" />
               </div>
             </div>
           </div>
