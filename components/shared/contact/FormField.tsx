@@ -5,12 +5,21 @@ export default function FormField({
   icon,
   label,
   placeholder,
+  value,
+  onChangeHandler,
+  error,
   type = "text",
 }: {
-  id: string;
+  id: "email" | "name" | "requirement";
   icon: LucideIcon;
   label: string;
   placeholder: string;
+  value: string | null;
+  onChangeHandler: (
+    field: "email" | "name" | "requirement",
+    value: string | boolean | null,
+  ) => void;
+  error?: string;
   type?: string;
 }) {
   const IconComponent = icon;
@@ -29,10 +38,20 @@ export default function FormField({
       <input
         id={id}
         type={type}
+        value={value ?? ""}
+        onChange={(e) => onChangeHandler(id, e.target.value)}
         required
         placeholder={placeholder}
-        className="bg-background border-2 border-outline-variant text-on-surface font-label-mono px-4 py-3 outline-none focus:border-primary-container input-focus-glow transition-all"
+        className={`bg-background border-2 text-on-surface font-label-mono px-4 py-3 outline-none input-focus-glow transition-all ${
+          error
+            ? "border-red-500 focus:border-red-500"
+            : "border-outline-variant focus:border-primary-container"
+        }`}
       />
+
+      <span className="text-red-500 text-xs font-label-mono block min-h-4 mt-1">
+        {error}
+      </span>
     </div>
   );
 }
